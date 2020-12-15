@@ -21,7 +21,7 @@ lambda_vec = [0.0001 0.25 1] ;
 mu_vec = [0.5 3 25];
 rank_vec = [20 40 60 80 100];
 try
-    load D:/Users/kuatas/Desktop/HyperSpectralWorks/LidarsýzKüçükVeri-VCA-FCLS_Init/sonuclar.mat
+    load D:/Users/kuatas/Desktop/HyperSpectralWorks/LidarsýzKüçükVeri-FCLS_Init/sonuclar.mat
 catch
     sonuclar = zeros(length(mu_vec)*length(lambda_vec)*length(rank_vec),5);
 end
@@ -36,7 +36,7 @@ lambda = lambda_vec(sayac_lamb);
 %bt_A = max(rand(size(tensorData,1),EndNum*rankNumber),1e-4);
 %bt_B = max(rand(size(tensorData,2),EndNum*rankNumber),1e-4);
 %bt_C = max(rand(size(tensorData,3),EndNum),1e-4);
-[bt_A,bt_B,bt_C]=VCA_FCLS_INIT(tensorData,EndNum,rankNumber);
+[bt_A,bt_B,bt_C]=FCLS_INIT(tensorData,EndNum,rankNumber);
 
 tic;
 [A,B,C,U,V,E]= mvntfTV(tensorData,bt_A,bt_B,bt_C,lambda,mu,EndNum,rankNumber);
